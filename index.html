@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Todo App</title>
+</head>
+<body class="fondo-solido">
+    <main>
+        <div id="fondo" class="fondo-paisaje">
+            <div class="contenedor">
+                <div class="display-todo">
+                    <h1>TODO</h1>
+                   <div id="sol" class="estilo-sol"></div>
+                </div>
+                <div id="despligueBarra">
+                    <div id="icono" class="icono-check"></div>
+                    <input class="contenedor estilo-input " type="text" name="" id="textoInput" placeholder="Create a new todo...">
+                </div>
+            </div>
+            <div id="barraCreada" class="todos contenedor"></div>
+            <div id="informacionBarra" class="contenedor barra">
+                <div class="display-barra">
+                    <div id="itemsLeft">
+                        <p>Items Left</p>
+                    </div>
+                    <div class="display-items">
+                        <p>All</p>
+                        <p>Active</p>
+                        <p>Completed</p>
+                    </div>
+                    <div>
+                        <p>Clear Completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
