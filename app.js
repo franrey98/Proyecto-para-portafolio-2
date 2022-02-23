@@ -93,7 +93,8 @@ function nuevoTodo(value) {
 
 function itemsRestantes() {
     let tareasRestantes = todos.length;
-    alert('tenes esta cantidad de items' + tareasRestantes)
+    appendChild(tareasRestantes)
+    ('tenes esta cantidad de items' + tareasRestantes)
 
 }
 
