@@ -58,6 +58,7 @@ function nuevoTodo(value) {
     todoTexto.classList.add('parrafo-creado')
     todoInput.type = 'checkbox';
     todoInput.name = 'checkbox';
+    todoInput.id = 'check';
     todoLabel.htmlFor = 'checkbox';
     todoLabel.addEventListener('click', function(e) {
         if(todoInput.checked) {
@@ -74,28 +75,35 @@ function nuevoTodo(value) {
     todoSpan.addEventListener('click', function(e) {
         e.target.parentElement.remove();
     });
-
+    
     todo.classList.add('todo');
     todoLabel.classList.add('circulo');
     todoSpan.classList.add('cruz');
-
+    
     todo.appendChild(todoInput);
     todo.appendChild(todoTexto);
     todo.appendChild(todoLabel);
     todo.appendChild(todoSpan);
-
+    
     barraCreada.appendChild(todo)
-
+    
     itemsRestantes()
+    console.log(todos)
 }
 
 
 function itemsRestantes() {
     const itemLeft = document.querySelector('#itemsLeft');
+    const checkbox = document.querySelector('#check');
     const tareasRestantes = todos.length;
-    const elementosRestantes = `<div><p>${tareasRestantes}</p></div>`;
-    // itemLeft.appendChild(elementosRestantes);
+    
     itemLeft.innerHTML = tareasRestantes + " Items Left"
-}
 
-console.log(todos)
+    checkbox.addEventListener( 'change', function() {
+        if(this.checked) {
+           itemLeft.innerHTML = tareasRestantes - 1 + " Items Left"
+        } else {
+            itemLeft.innerHTML = tareasRestantes + " Items Left"
+        }
+    });
+}
