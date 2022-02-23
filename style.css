@@ -281,3 +281,8 @@ input {
     margin-left: 7rem;
 }
 
+#itemsLeft {
+    font-size: 1.5rem;
+    color: #534b4b;
+    cursor: pointer;
+}
