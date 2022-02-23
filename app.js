@@ -1,7 +1,6 @@
 // Variables
 const textoInput = document.querySelector("#textoInput");
 const sol = document.querySelector('#sol');
-const itemLeft = document.querySelector('#itemsLeft');
 let todos = [];
 
 // Eventos
@@ -92,10 +91,11 @@ function nuevoTodo(value) {
 
 
 function itemsRestantes() {
-    let tareasRestantes = todos.length;
-    appendChild(tareasRestantes)
-    ('tenes esta cantidad de items' + tareasRestantes)
-
+    const itemLeft = document.querySelector('#itemsLeft');
+    const tareasRestantes = todos.length;
+    const elementosRestantes = `<div><p>${tareasRestantes}</p></div>`;
+    // itemLeft.appendChild(elementosRestantes);
+    itemLeft.innerHTML = tareasRestantes + " Items Left"
 }
 
 console.log(todos)
