@@ -57,10 +57,15 @@ function nuevoTodo(value) {
 
     todoTexto.textContent = value;
     todoTexto.classList.add('parrafo-creado')
+    
     todoInput.type = 'checkbox';
     todoInput.name = 'checkbox';
     todoInput.id = 'check';
+    
     todoSpan.textContent = 'X';
+    todoSpan.classList.add('cruz');
+    
+    todo.classList.add('todo');
 
     todoSpan.addEventListener('click', function(e) {
         e.target.parentElement.remove();
@@ -68,11 +73,15 @@ function nuevoTodo(value) {
         itemsRestantes()
         console.log(todos)
     });
-    
-    todo.classList.add('todo');
-    todoLabel.classList.add('circulo');
-    todoSpan.classList.add('cruz');
-    
+
+    todoInput.addEventListener('change', function(){
+        if(this.checked) {
+            todos.pop();
+            itemsRestantes()
+        }
+    })
+
+
     todo.appendChild(todoInput);
     todo.appendChild(todoTexto);
     todo.appendChild(todoLabel);
@@ -84,16 +93,7 @@ function nuevoTodo(value) {
 
 function itemsRestantes() {
     const itemLeft = document.querySelector('#itemsLeft');
-    const checkbox = document.querySelectorAll('#check');
     const tareasRestantes = todos.length;
     
     itemLeft.innerHTML = tareasRestantes + " Items Left"
-
-    checkbox.addEventListener( 'change', function() {
-        if(this.checked) {
-           itemLeft.innerHTML = todos.length -1 + " Items Left";
-        } else {
-            itemLeft.innerHTML = todos.length + " Items Left";;
-        }
-    });
 }
