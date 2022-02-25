@@ -42,6 +42,7 @@ function enviarInput(e) {
     todos.push(e.target.value);
     nuevoTodo(e.target.value)
     textoInput.value = '';
+    itemsRestantes()
 }
 }
 
@@ -59,21 +60,13 @@ function nuevoTodo(value) {
     todoInput.type = 'checkbox';
     todoInput.name = 'checkbox';
     todoInput.id = 'check';
-    todoLabel.htmlFor = 'checkbox';
-    todoLabel.addEventListener('click', function(e) {
-        if(todoInput.checked) {
-            todoInput.checked = false;
-            todoTexto.style.textDecoration = 'none';
-            todoLabel.classList.remove('activo');
-        } else {
-            todoInput.checked = true;
-            todoTexto.style.textDecoration = 'line-through';
-            todoLabel.classList.add('activo')
-        }
-    });
     todoSpan.textContent = 'X';
+
     todoSpan.addEventListener('click', function(e) {
         e.target.parentElement.remove();
+        todos.pop();
+        itemsRestantes()
+        console.log(todos)
     });
     
     todo.classList.add('todo');
@@ -85,25 +78,22 @@ function nuevoTodo(value) {
     todo.appendChild(todoLabel);
     todo.appendChild(todoSpan);
     
-    barraCreada.appendChild(todo)
-    
-    itemsRestantes()
-    console.log(todos)
+    barraCreada.appendChild(todo)   
 }
 
 
 function itemsRestantes() {
     const itemLeft = document.querySelector('#itemsLeft');
-    const checkbox = document.querySelector('#check');
+    const checkbox = document.querySelectorAll('#check');
     const tareasRestantes = todos.length;
     
     itemLeft.innerHTML = tareasRestantes + " Items Left"
 
     checkbox.addEventListener( 'change', function() {
         if(this.checked) {
-           itemLeft.innerHTML = tareasRestantes - 1 + " Items Left"
+           itemLeft.innerHTML = todos.length -1 + " Items Left";
         } else {
-            itemLeft.innerHTML = tareasRestantes + " Items Left"
+            itemLeft.innerHTML = todos.length + " Items Left";;
         }
     });
 }
