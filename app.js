@@ -71,13 +71,15 @@ function nuevoTodo(value) {
         e.target.parentElement.remove();
         todos.pop();
         itemsRestantes()
-        console.log(todos)
     });
 
     todoInput.addEventListener('change', function(){
-        if(this.checked) {
+        if(this.checked === true) {
             todos.pop();
             itemsRestantes()
+        } else {
+            todos.push('algo')
+            itemsRestantes();
         }
     })
 
