@@ -1,12 +1,14 @@
 // Variables
 const textoInput = document.querySelector("#textoInput");
 const sol = document.querySelector('#sol');
+const completos = document.querySelector('#limpiarCompletos');
 let todos = [];
 
 // Eventos
 eventListeners();
 function eventListeners() {
     sol.addEventListener('click', cambiarModoIluminado);
+    completos.addEventListener('click', limpiarCompletados);
     textoInput.addEventListener('keyup', enviarInput);
 }
 
@@ -38,12 +40,12 @@ function cambiarModoIluminado() {
 }
 
 function enviarInput(e) {
-    if(e.key === 'Enter' || e.keyCode  === 13) {
-    todos.push(e.target.value);
-    nuevoTodo(e.target.value)
-    textoInput.value = '';
-    itemsRestantes();
-}
+        if(e.key === 'Enter' || e.keyCode  === 13) {
+        todos.push(e.target.value);
+        nuevoTodo(e.target.value)
+        textoInput.value = '';
+        itemsRestantes();
+    }
 }
 
 function nuevoTodo(value) {
@@ -90,6 +92,19 @@ function nuevoTodo(value) {
     todo.appendChild(todoLabel);
     todo.appendChild(todoSpan);
     barraCreada.appendChild(todo);   
+
+}
+
+function limpiarCompletados() {
+    const parrafoTachado = document.querySelector('.parrafo-tachado');
+    const todo = document.querySelector('.todo');
+    if(parrafoTachado) {
+        todo.remove();
+        itemsRestantes();
+    } else {
+        itemsRestantes();
+    }
+
 }
 
 function itemsRestantes() {
