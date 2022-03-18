@@ -6,8 +6,8 @@ let todos = [];
 // Eventos
 eventListeners();
 function eventListeners() {
-    sol.addEventListener('click', cambiarModoIluminado)
-    textoInput.addEventListener('keyup', enviarInput)
+    sol.addEventListener('click', cambiarModoIluminado);
+    textoInput.addEventListener('keyup', enviarInput);
 }
 
 // Funciones
@@ -42,7 +42,7 @@ function enviarInput(e) {
     todos.push(e.target.value);
     nuevoTodo(e.target.value)
     textoInput.value = '';
-    itemsRestantes()
+    itemsRestantes();
 }
 }
 
@@ -56,7 +56,7 @@ function nuevoTodo(value) {
     const todoSpan = document.createElement('span');
 
     todoTexto.textContent = value;
-    todoTexto.classList.add('parrafo-creado')
+    todoTexto.classList.add('parrafo-creado');
     
     todoInput.type = 'checkbox';
     todoInput.name = 'checkbox';
@@ -70,32 +70,31 @@ function nuevoTodo(value) {
     todoSpan.addEventListener('click', function(e) {
         e.target.parentElement.remove();
         todos.pop();
-        itemsRestantes()
+        itemsRestantes();
     });
 
     todoInput.addEventListener('change', function(){
         if(this.checked === true) {
             todos.pop();
-            itemsRestantes()
+            todoTexto.classList.add('parrafo-tachado')
+            itemsRestantes();
         } else {
-            todos.push('algo')
+            todos.push('algo');
+            todoTexto.classList.remove('parrafo-tachado')
             itemsRestantes();
         }
     })
-
 
     todo.appendChild(todoInput);
     todo.appendChild(todoTexto);
     todo.appendChild(todoLabel);
     todo.appendChild(todoSpan);
-    
-    barraCreada.appendChild(todo)   
+    barraCreada.appendChild(todo);   
 }
-
 
 function itemsRestantes() {
     const itemLeft = document.querySelector('#itemsLeft');
     const tareasRestantes = todos.length;
     
-    itemLeft.innerHTML = tareasRestantes + " Items Left"
+    itemLeft.innerHTML = tareasRestantes + " Items Left";
 }
