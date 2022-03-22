@@ -23,6 +23,12 @@ body {
     line-height: 1.5;
 }
 
+a {
+    color: white;
+    margin: 1rem;
+    font-size: 18px;
+}
+
 p {
     font-size: 1.5rem;
     color: #534b4b;
@@ -35,21 +41,21 @@ h1 {
     letter-spacing: 15px;
 }
 
-h3 {
-    color: white;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    font-weight: 400;
-    font-style: italic;
-    padding: 1rem;
-}
 
 /* Utilidades */
 
 .contenedor{
-    max-width: 65rem;
+    max-width: 35rem;
     margin: 0 auto;
 }
+
+@media (min-width:768px) {
+    .contenedor {
+        max-width: 65rem;
+        margin: 0 auto;
+    }
+}
+
 
 /* Cambiar a modo iluminado */
 
@@ -77,13 +83,15 @@ h3 {
     font-weight: 700;
     font-style: italic;
     margin-bottom: 5rem;
+    color: white;
+    background: hsl(0deg 0% 0%);
 }
 
 .barra-blanca {
     width: 100%;
     height: 5rem;
     color: white;
-    background-color: hsl(0deg 0% 100%);
+    background-color: hsl(0deg 0% 0%);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top: 1px solid #8d8d8d;
@@ -100,7 +108,7 @@ h3 {
 .todo-blanco {
     width: 100%;
     height: 5rem;
-    background-color: hsl(0deg 0% 91%);
+    background-color: hsl(0deg 0% 0%);
     border: none;
     text-align: center;
     border-bottom: 1px solid rgb(195 195 195);
@@ -147,7 +155,7 @@ h3 {
     width: 100%;
     height: 5rem;
     margin-top: 5rem;
-    background-color:hsl(232, 28%, 20%);
+    background-color:hsl(0deg 0% 0%);
     border-radius: 5px;
     border: none;
     color: white;
@@ -158,55 +166,46 @@ h3 {
     margin-bottom: 5rem;
 }
 
-.icono-check {
-    width: 23px;
-    height: 23px;
-    border: 1px solid rgb(154 128 213);
-    border-radius: 2rem;
-    position: absolute;
-    margin-top: 6.4rem;
-    margin-left: 2.5rem;
-    cursor: pointer;
-}
-
-.icono-check:hover {
-    border: 1px solid hsl(280, 44%, 25%);
-    background: url(./images/icon-check.svg), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-    background-size: 28px;
-    background-position: 0px center;
-    background-repeat: no-repeat;
-    transition: all 0.8s;
-}
-
-.background-check {
-    border: 1px solid hsl(281, 44%, 35%);
-    background: url(./images/icon-check.svg), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-    background-size: 28px;
-    background-position: 0px center;
-    background-repeat: no-repeat;
-    transition: all 0.8s;
-}
-
 input {
     text-align: center;
 }
 
 .barra {
     width: 100%;
-    height: 5rem;
-    background-color: hsl(232, 28%, 20%);
+    height: 7rem;
+    background-color: hsl(0deg 0% 0%);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top: 1px solid #555050;
 }
 
+@media (min-width:768px) {
+    
+.barra {
+    width: 100%;
+    height: 5rem;
+    background-color: hsl(0deg 0% 0%);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 1px solid #555050;
+}
+
+}
+
 .display-barra {
     display: flex;
     justify-content: space-around;
-    gap: 5rem;
-    margin-top: 1.3rem;
+    margin-top: 0.3rem;
     font-style: italic;
+}
 
+@media (min-width:768px) {
+    .display-barra {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1.3rem;
+        font-style: italic;
+    }
 }
 
 .display-items {
@@ -224,12 +223,52 @@ input {
     display: none;
 }
 
+.margin-mq {
+    margin-right: 1rem;
+}
+
+/* Footer */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    height: 8rem;
+    width: 100%;
+}
+
+@media (min-width:768px) {
+    
+    footer {
+        position: absolute;
+        bottom: 0;
+        background-color: black;
+        height: 5rem;
+        width: 100%;
+    }
+}
+
+
+.barra-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.h3-footer { /*ARREGLAR LA FUENTE ITALIC*/
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    padding: 1rem;
+}
+
 /* Cuando creo una actividad */
 
 .todo {
     width: 100%;
     height: 5rem;
-    background-color: hsl(232, 28%, 20%);
+    background-color: hsl(0deg 0% 0%);
     border: none;
     text-align: center;
     border-bottom: 1px solid rgb(73 64 64);
@@ -260,30 +299,10 @@ input {
 .input-creado {
     width: 100%;
     height: 5rem;
-    background-color: hsl(232, 28%, 20%);
+    background-color: hsl(0deg 0% 0%);
     border: none;
     text-align: center;
     border-bottom: 1px solid rgb(73 64 64);
-}
-
-.icono-creado {
-    width: 23px;
-    height: 23px;
-    border: 1px solid rgb(154 128 213);
-    border-radius: 2rem;
-    position: absolute;
-    margin-top: 1.4rem;
-    margin-left: 2.5rem;
-    cursor: pointer;
-}
-
-.icono-creado:hover {
-    border: 1px solid hsl(280, 44%, 25%);
-    background: url(./images/icon-check.svg), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-    background-size: 28px;
-    background-position: 0px center;
-    background-repeat: no-repeat;
-    transition: all 0.8s;
 }
 
 .display-creado {
@@ -296,10 +315,21 @@ input {
     margin-left: 7rem;
 }
 
+@media (min-width:768px) {
+    
 #itemsLeft {
     font-size: 1.5rem;
     color: #534b4b;
     cursor: pointer;
+}
+
+}
+
+#itemsLeft {
+    font-size: 1.5rem;
+    color: #534b4b;
+    cursor: pointer;
+    margin-left: 2rem;
 }
 
 .parrafo-tachado {

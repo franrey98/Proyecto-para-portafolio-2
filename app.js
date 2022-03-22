@@ -14,12 +14,14 @@ function eventListeners() {
 
 // Funciones
 
+mostrarStorage();
+
 function cambiarModoIluminado() {
     // Imagen bg
     const fondoPaisaje = document.querySelector('#fondo');
     fondoPaisaje.classList.toggle('fondo-paisaje');
     fondoPaisaje.classList.toggle('fondo-luz');
-
+    
     // Fondo
     document.body.classList.toggle('fondo-solido');
     document.body.classList.toggle('luz');
@@ -27,24 +29,26 @@ function cambiarModoIluminado() {
     // Input 
     textoInput.classList.toggle('estilo-input');
     textoInput.classList.toggle('input-blanco');
-
+    
     // Barra 
     const informacionBarra = document.querySelector('#informacionBarra');
     informacionBarra.classList.toggle('barra');
     informacionBarra.classList.toggle('barra-blanca');
-
+    
     // Icono 
     const sol = document.querySelector('#sol');
     sol.classList.toggle('estilo-sol');
     sol.classList.toggle('estilo-luna');
+    
 }
 
 function enviarInput(e) {
-        if(e.key === 'Enter' || e.keyCode  === 13) {
+        if(e.key === 'Enter' && e.keyCode  === 13 && e.target.value.length > 3) {
         todos.push(e.target.value);
         nuevoTodo(e.target.value)
         textoInput.value = '';
         itemsRestantes();
+        guardarStorage()
     }
 }
 
@@ -73,6 +77,7 @@ function nuevoTodo(value) {
         e.target.parentElement.remove();
         todos.pop();
         itemsRestantes();
+        localStorage.removeItem('cosasapp');
     });
 
     todoInput.addEventListener('change', function(){
@@ -100,6 +105,7 @@ function limpiarCompletados() {
     const todo = document.querySelector('.todo');
     if(parrafoTachado) {
         todo.remove();
+        localStorage.removeItem('cosasapp');
         itemsRestantes();
     } else {
         itemsRestantes();
@@ -112,4 +118,24 @@ function itemsRestantes() {
     const tareasRestantes = todos.length;
     
     itemLeft.innerHTML = tareasRestantes + " Items Left";
+}
+
+// LocalStorage
+
+function guardarStorage() {
+    carritoStringify = JSON.stringify(todos);
+    localStorage.setItem('cosasapp', carritoStringify)
+}
+
+function mostrarStorage() {
+    if (JSON.parse(localStorage.getItem('cosasapp')) == null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('cosasapp'));
+    }
+
+    todos.forEach(element => {
+        nuevoTodo(element);
+    });
+    
 }
