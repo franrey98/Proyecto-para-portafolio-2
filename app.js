@@ -45,10 +45,10 @@ function cambiarModoIluminado() {
 function enviarInput(e) {
         if(e.key === 'Enter' && e.keyCode  === 13 && e.target.value.length > 3) {
         todos.push(e.target.value);
-        nuevoTodo(e.target.value)
+        nuevoTodo(e.target.value);
         textoInput.value = '';
         itemsRestantes();
-        guardarStorage()
+        guardarStorage();
     }
 }
 
